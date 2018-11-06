@@ -17,7 +17,15 @@ if (!is_null($events['events'])) {
 		//if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 		if ($event['type'] == 'message' || $event['type'] == 'follow') {
 			// Get text sent
-			$text = $event['source']['userId'];
+			if($event['message']['type'] == 'text') {
+				if($event['message']['text'] == "are you ?") {
+					$text = "Good";
+				}
+				else {
+					$text = "i can't answer you.";
+				}
+			}
+			//$text = $event['source']['userId'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
